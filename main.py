@@ -8,30 +8,36 @@ import time
 ###
 
 def linear_search(mylist, key):
-	""" done. """
-	for i,v in enumerate(mylist):
-		if v == key:
-			return i
-	return -1
+  for i,v in enumerate(mylist):
+    if v == key:
+      return i
+  return -1
 
 
 def binary_search(mylist, key):
-	""" done. """
-	return _binary_search(mylist, key, 0, len(mylist)-1)
+  return _binary_search(mylist, key, 0, len(mylist)-1)
 
 def _binary_search(mylist, key, left, right):
-	"""
-	Recursive implementation of binary search.
+  middle = (left + right) // 2
+  if mylist[middle] == key:
+    return middle
+  if left == right or left>right or right<left:
+    return -1
+  elif mylist[middle] < key:
+    return _binary_search(mylist, key, middle + 1, right)
+  elif mylist[middle] > key:
+    return _binary_search(mylist, key, left, middle - 1)
+#	Recursive implementation of binary search.
 
-	Params:
-	  mylist....list to search
-	  key.......search key
-	  left......left index into list to search
-	  right.....right index into list to search
+#	Params:
+#	  mylist....list to search
+#	  key.......search key
+#	  left......left index into list to search
+#	  right.....right index into list to search
 
-	Returns:
-	  index of key in mylist, or -1 if not present.
-	"""
+#	Returns:
+#	  index of key in mylist, or -1 if not present.
+#	"""
 	### TODO
 
 	###
@@ -40,7 +46,11 @@ def _binary_search(mylist, key, left, right):
 
 
 def time_search(search_fn, mylist, key):
-	"""
+  start = time.time()
+  search_fn(mylist, key)
+  end = time.time()
+  return (end - start) * 1000
+  """
 	Return the number of milliseconds to run this
 	search function on this list.
 
@@ -62,7 +72,15 @@ def time_search(search_fn, mylist, key):
 	###
 
 def compare_search(sizes=[1e1, 1e2, 1e3, 1e4, 1e5, 1e6, 1e7]):
-	"""
+  lst = []
+  for size in sizes:
+    sorted_list = list(range(int(size)))
+    lst.append(
+      (size,
+      time_search(linear_search,sorted_list,-1),
+      time_search(binary_search,sorted_list,-1)))
+  return lst
+  """
 	Compare the running time of linear_search and binary_search
 	for input sizes as given. The key for each search should be
 	-1. The list to search for each size contains the numbers from 0 to n-1,
@@ -87,3 +105,4 @@ def print_results(results):
 							floatfmt=".3f",
 							tablefmt="github"))
 
+print_results(compare_search())
