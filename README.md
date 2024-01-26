@@ -3,7 +3,7 @@
 **Name (Team Member 1):**___Tony Shen______________________  
 **Name (Team Member 2):**___Sean Hall____________
 
-In this recitation, we will investigate asymptotic complexity. Additionally, we will get familiar with the various technologies we'll use for collaborative coding.
+In this recitation, we will investigate asymptotic complexity. Additionally, we will get  familiar with the various technologies we'll use for collaborative coding.
 
 To complete this recitation, follow the instructions in this document. Some of your answers will go in this file, and others will require you to edit `main.py`. All tests are in `test_main.py`.
 
@@ -53,13 +53,13 @@ The best case input value for key in linear_search is the first value in the lis
 
 |            n |   linear |   binary |
 |--------------|----------|----------|
-|       10.000 |    0.004 |    0.004 |
-|      100.000 |    0.005 |    0.005 |
+|       10.000 |    0.003 |    0.004 |
+|      100.000 |    0.005 |    0.004 |
 |     1000.000 |    0.056 |    0.005 |
-|    10000.000 |    0.890 |    0.056 |
-|   100000.000 |   28.922 |    0.036 |
-|  1000000.000 |  402.633 |    0.055 |
-| 10000000.000 | 4685.910 |    0.055 |
+|    10000.000 |    0.856 |    0.027 |
+|   100000.000 |   84.304 |    0.043 |
+|  1000000.000 |  397.619 |    0.034 |
+| 10000000.000 | 4383.450 |    0.076 |
 
 - [ ] 9. The theoretical worst-case running time of linear search is $O(n)$ and binary search is $O(log_2(n))$. Do these theoretical running times match your empirical results? Why or why not?
 
